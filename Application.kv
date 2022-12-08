@@ -1,0 +1,118 @@
+
+<Splash_screen>:
+    MDScreen:
+        name: "splash_screen"
+        md_bg_color: "lightblue"
+        Image:
+            id: gif
+            source: "assets/icons/loading_image.gif"
+            font_size:50
+            size_hint: None, None
+            pos_hint: {"center_y": .6 , "center_x": .5 }
+        Label:
+            pos_hint: {"center_y": .53 , "center_x": .5 }
+            text:'Loading...'
+        MDBoxLayout:
+            pos_hint: {"center_y": .5 , "center_x": .5 }
+            size_hint_x: .4
+            size_hint_y: .02
+            MDProgressBar:
+                id: loading
+                height:'7dp'
+                orientation: "horizontal"
+                type: 'indeterminate'
+                running_duration: 1
+                catching_duration: 1
+                color: app.theme_cls.accent_color
+<Home_screen>:
+    MDScreen:
+        name: "home_screen"
+        MDBoxLayout:
+            orientation:"vertical"
+            MDTopAppBar:
+                right_action_items: [["arrow-right",root.go_to_screen_capture]]
+                left_action_items: [["arrow-down-drop-circle"]]
+                margin:5
+            RelativeLayout:
+                orientation:"vertical"
+                MDCard:
+                    radius: 36
+                    md_bg_color: "lightblue"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    size_hint: .9, .9
+                MDFillRoundFlatIconButton:
+                    text:"Camera"
+                    icon: "camera-off"
+                    pos_hint: {"center_x": .5, "center_y": .5}
+                    disabled: True
+                MDRectangleFlatIconButton:
+                    id: open
+                    text:"Open"
+                    icon: "camera"
+                    text_color: 'black'
+                    line_color: "black"
+                    icon_color: 'black'
+                    pos_hint: {"center_x": .2, "center_y": .15}
+                    on_press:root.open_camera(self)
+                MDRectangleFlatIconButton:
+                    text:"Close"
+                    icon: "camera-off"
+                    text_color: 'black'
+                    line_color: "black"
+                    icon_color: 'black'
+                    pos_hint: {"center_x": .33, "center_y": .15}
+                    on_press:root.close_camera(self)
+                MDRectangleFlatIconButton:
+                    id: exit_window
+                    text:"Exit"
+                    icon: "exit-to-app"
+                    text_color: 'black'
+                    line_color: "black"
+                    icon_color: 'red'
+                    pos_hint: {"center_x": .85, "center_y": .15}
+                    on_press:root.exit_window(self)
+<screen_capture>:
+    MDScreen:
+        name: "screen_capture"
+        RelativeLayout:
+            orientation:"vertical"
+            MDFillRoundFlatIconButton:
+                text:"Screen Capture"
+                icon: "video-off-outline"
+                pos_hint: {"center_x": .5, "center_y": .5}
+                disabled: True
+            MDRectangleFlatIconButton:
+                id: open
+                text:"Start"
+                icon: "record-circle-outline"
+                text_color: 'black'
+                line_color: "black"
+                icon_color: 'red'
+                pos_hint: {"center_x": .25, "center_y": .95}
+                on_press:root.start_screen_capture(self)
+            MDRectangleFlatIconButton:
+                text:"Stop"
+                icon: "stop-circle-outline"
+                text_color: 'black'
+                line_color: "black"
+                icon_color: 'red'
+                pos_hint: {"center_x": .4, "center_y": .95}
+                on_press:root.close_screen_capture(self)
+            MDRectangleFlatIconButton:
+                id: exit_window
+                text:"Exit"
+                icon: "exit-to-app"
+                text_color: 'black'
+                line_color: "black"
+                icon_color: 'red'
+                pos_hint: {"center_x": .85, "center_y": .95}
+                on_press:root.exit_window(self)
+            MDRectangleFlatIconButton:
+                icon: "arrow-left-drop-circle-outline"
+                text: 'Back'
+                text_color: 'black'
+                line_color: "black"
+                icon_color: 'black'
+                md_bg_color: app.theme_cls.accent_color
+                pos_hint: {"center_x": .1, "center_y": .95}
+                on_press: root.go_to_home(self)

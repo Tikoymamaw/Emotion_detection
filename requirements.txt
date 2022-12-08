@@ -1,0 +1,9 @@
+kivy
+kivymd
+matplotlib
+numpy
+sklearn
+opencv-python
+mediapipe
+tensorflow
+pandas

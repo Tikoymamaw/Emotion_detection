@@ -1,0 +1,20 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+kivy = "*"
+kivymd = "*"
+matplotlib = "*"
+numpy = "*"
+sklearn = "*"
+opencv-python = "*"
+mediapipe = "*"
+tensorflow = "*"
+pandas = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.9"
