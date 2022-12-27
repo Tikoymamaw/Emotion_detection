@@ -86,10 +86,10 @@ class Home_screen(MDScreen ):
         global cam_on
         cam_on = True
         self.capture = cv.VideoCapture(0)
-
-       
-        # self.capture.set(cv.CAP_PROP_FRAME_WIDTH, 900)
-        # self.capture.set(cv.CAP_PROP_FRAME_HEIGHT, 750)
+        if not self.capture.isOpened():
+            self.capture = cv.VideoCapture(1)
+        if not self.capture.isOpened():
+            raise IOError('Camera Not Found')
       
         self.capture.set(cv.CAP_PROP_FRAME_WIDTH, 400)
         self.capture.set(cv.CAP_PROP_FRAME_HEIGHT, 400)
